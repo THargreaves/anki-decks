@@ -35,7 +35,7 @@ To contribute to these decks you will need installations of the following:
 - Overwrite the existing note `.txt` file with the output
 - Open Git Bash in the repository clone
 - Check your changes have been made with `git status`
-- Stage changes using `git add .`
+- To stage all change, use `git add .`. Otherwise (preferred), stage a single file with `git add path/to/file`
 - Commit changes using `git commit -m "{Message explaining changes in imperative voice}"` (If you forget to add the `-m` flag, Vim will open. Exit this using `:q!`)
 - Push changes using `git push`. If this fails, you may need to merge first using `git pull` then `:wq` to close Vim. If this fails, contact me 
 
