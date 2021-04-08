@@ -1,3 +1,41 @@
+Log likelihood for EDM	\(l(\theta) = \frac{\overline{\rm Y}\theta - b(\theta)}{\frac{\phi}{n}}\)	
+Sample mean distribution&nbsp;	\(\overline{Y}\) ~ EDM(\(\theta, \phi_i) \)	
+MLE for \(\mu\) with no weights&nbsp;	\(\hat{\mu} = \overline{\rm Y} \)	
+MLE of \(\mu\) with weights&nbsp;	\(\hat{\mu} = \frac{\Sigma_i \omega_i Y_i}{\Sigma_i \omega_i} \)	
+Unit deviance&nbsp;	\(d(y,\mu) = 2[t(y,y) - t(y,\mu)], t(y,\mu) = \theta y - b(\theta) \)	
+Total deviance&nbsp;	\(D(y,\mu) = \Sigma_{i=1}^N \omega_i d(y_i,\mu_i)\)	
+Scaled Deviance&nbsp;	\(D^*(y,\mu) = \frac{D(y,\mu)}{\phi}\)	
+EDM in dispersion form using unit deviance&nbsp;	\(p(y|\mu,\phi) = a^*(y,\phi)exp{\frac{-d(y,\mu)}{2\phi}}\)	
+Saddlepoint approximation&nbsp;	\(\tilde{p}(\mu,\phi) = \frac{1}{\sqrt{2\pi\phi V(y)}}exp{\frac{-d(y,\mu)}{2\phi}}\)	
+Approximating the pdf using Saddlepoint Approximation&nbsp;	\(~{p}(y) = \frac{1}{\sqrt{2\pi K''(\hat{t})}}exp{(K(\hat{t})-\hat{t}y)}\) where \(\hat{t}\) solves \(K'(\hat{t})=y\)	
+Distribution of \(\frac{d(y,\mu)}{\phi}\)	&nbsp;\(\frac{d(y,\mu)}{\phi} \text{~} \chi_1^2\)	
+Conditions for Saddlepoint approximation	Poisson: \(\mu \geq 3\)<div>Binomial: \(m\mu \geq 3\) and \(m(1-\mu) \geq 3\)</div><div>Gamma: \(\phi \leq \frac{1}{3} \) (shape \(\geq 3\))</div>	
+Random component of EDM&nbsp;	\(Y_i \text{~} EDM (\mu_i, \frac{\phi}{\omega_i})\)	
+Systematic Component: Linear Predictor&nbsp;	\(\eta_i = \beta^T x_i + \delta_i\)	
+Systematic Component: Link funciton	\(g(\mu_i) = \eta_i\)	
+Response Residual&nbsp;	\(r_i = y_i - \hat{\mu}_i\)	
+Pearson Residuals and aymptomatic behaviour&nbsp;	\(r_i = \frac{Y_i - \hat{\mu}_i}{{\sqrt{\frac{V(\hat{\mu}_i)}{\omega_i}}}} \)<div>\(\mathbb{E}(r_i) \to 0\)</div><div>\(Var(r_i) \to \phi \)</div>	
+Deviance Residual	\(r_i = sign(y_i - \hat{\mu}_i)\sqrt{\omega_i d(y_i,\hat{\mu}_i)}\)	
+Working Residual	\(r_i = z_i - x_i^T\hat{\beta} = (y_i - \hat{\mu}_i)g'(\hat{\mu}_i)\)	
+\(\mathbb{E}(z_i | \beta, \phi) \) from IWLS, \(z_i\) working observations&nbsp;	\(x_i^T \beta \)	
+\(Var(z_i | \underline{\beta},\phi)\) from IWLS, \(z_i\) working observations&nbsp;	\(\frac{\phi}{W_i}\)	
+\(\underline{\beta}\) with working weights&nbsp;	\(\underline{\beta} = (X^TWX)^{-1}X^TW\underline{z}\)	
+Hat matrix with working weights&nbsp;	\( H = W^{\frac{1}{2}}X(X^TWX)^{-1}X^TW^{\frac{1}{2}}\)	
+Standardised Working residuals&nbsp;	\(r_i ' = \frac{r_i}{\sqrt{1-h_i}}\)	
+Standardised Deviance Residuals&nbsp;	\( r_i ' = sign(y_i - \hat{\mu}_i)\sqrt{\frac{\omega_i d(y_i, \hat{\mu}_i)}{1-h_i}}\)	
+Standardised Pearson Residuals&nbsp;	\( r_i ' = \frac{y_i - \hat{\mu}_i}{\sqrt{(1-h_i)\frac{V(\hat{\mu}_i)}{\omega_i}}}\)	
+Logistic Regression model: EDM and link function&nbsp;	EDM: Binomial<div>Link function: Logit</div>	
+Logistic regression<div>For \(log(\frac{\mu}{1-\mu}) = \alpha + \beta x \), odds of \(x_i = 0 \)</div>	\(\frac{\mathbb{P}(Y_i = 1 | x_i = 0)}{\mathbb{P}(Y_i = 0 | x_i = 0)} = e^{\alpha}\)	
+Logistic regression<div>For \(log(\frac{\mu}{1-\mu}) = \alpha + \beta x \), odds of \(x_i = 1 \)</div>	\(\frac{\mathbb{P}(Y_i = 1 | x_i = 1)}{\mathbb{P}(Y_i = 0 | x_i = 1)} = e^{\alpha + \beta}\)	
+Logistic regression<div>For \(log(\frac{\mu}{1-\mu}) = \alpha + \beta x \), odds ratio</div>	\(\frac{\mathbb{P}(Y_i = 1 | x_i = 1)}{\mathbb{P}(Y_i = 0 | x_i = 1)}\frac{\mathbb{P}(Y_i = 0 | x_i = 0)}{\mathbb{P}(Y_i = 1 | x_i = 0)}&nbsp;= e^{\beta}\)	
+Logistic Regression model for factor variable \(x_i \in \{1,2,...,K\}\)	\(log(\frac{\mu_i}{1-\mu_i}) = \alpha + \Sigma_{k=2}^{K} \beta_k I_\{x_i = k\} \)	
+Log odds for \(x_i = k\)&nbsp;	\(\frac{\mathbb{P}(Y_i = 1 | x_i = k)}{\mathbb{P}(Y_i = 0 | x_i = k)} = e^{\alpha + \beta k}\)	
+Odds ratio for level k vs. level 1	\(\frac{\mathbb{P}(Y_i = 1 | x_i = k)}{\mathbb{P}(Y_i = 0 | x_i = k)}\frac{\mathbb{P}(Y_i = 0 | x_i = 1)}{\mathbb{P}(Y_i = 1 | x_i = 1)}&nbsp;= e^{\beta k}\)	
+Probit link function's corresponding tolerance distribution&nbsp;	Normal	
+Logit link function's corresponding tolerance distribution&nbsp;	Logistic	
+cloglog link function's corresponding tolerance distribution&nbsp;	Gumbel&nbsp;	
+Cauchit link function's corresponding tolerance distribution&nbsp;	Cauchy	
+Log link function's corresponding tolerance distribution&nbsp;	Exponential&nbsp;	
 Design Matrix Defintition of Nested Models	Consider two models<div><br></div><div>\[ M_1 : \mathbb{E}(Y) = X^{(1)}\beta^{(1)}\\ M_2 : \mathbb{E}(Y) = X^{(2)}\beta^{(2)} \]</div><div><br></div><div>\(M_1 \preceq M_2\) if there is a matrix \(C\) such that \(X^{(1)} = X^{(2)}C\). If \(C\) is invertible then the models are identical (though possibly parametrised differently).</div>	definition
 Deviance	The deviance is the sum of squares evaluated at \(\hat\beta\).<div><br></div><div>\[S(\hat\beta) = \sum(y_i - x_i^T \hat\beta)^2 = \sum(y_i - \hat{y_i})^2 \]</div>	definition
 Coefficient of Determination	\[R^2 = 1 - \frac{\text{Deviance}(M)}{\text{Deviance}(M_0)} =&nbsp;&nbsp;1 - \frac{\sum(y_i - \hat{y_i})^2}{\sum(y_i - \bar{y})^2}\]<div><br></div><div>In terms of sum of squares, we have</div><div><br></div><div>\[R^2 = 1 - \frac{\text{ResidSS}}{\text{TotalSS}} = \frac{\text{RegrSS}}{\text{TotalSS}}\]</div>	definition
